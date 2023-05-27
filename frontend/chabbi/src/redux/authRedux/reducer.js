@@ -1,7 +1,7 @@
 import * as types from "./actiontype";
 const initstate = {
   isAuth: false,
-  user:[],
+  user:{},
   isAuthLoding: false,
   isAuthError: false,
 };

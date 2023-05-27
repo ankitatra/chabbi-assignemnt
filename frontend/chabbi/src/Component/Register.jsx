@@ -9,7 +9,7 @@ const Register = () => {
   const [name, setName] = useState("");
   const [gender, setGender] = useState("");
   const dispatch = useDispatch();
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
@@ -26,33 +26,27 @@ const Register = () => {
       profile_picture: gender,
     };
 
-    // axios
-    //   .post("http://localhost:8000/user/register", data)
-    //   .then((response) => {
-    //     console.log("Registration successful:", response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Registration failed:", error.response.data);
-    //   });
-
     if (data) {
-      dispatch(login({ data})).then(() => {
-    // //     //do somethinhg
-    navigate("/dashboard",
-      { replace: true } );
+      dispatch(login({ data })).then(() => {
+        navigate("/dashboard", { replace: true });
       });
     }
   };
 
   return (
+    <>
+    <h1 style={{color:"white",textAlign:"center"}}> Improve typing Speed With AcuType!</h1>
+    
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="name">Name:</label>
+       
         <input
+        style={{fontSize:"18px",marginTop:"30px"}}
           type="text"
           id="name"
           value={name}
           onChange={handleNameChange}
+          placeholder="enter name.."
           required
         />
       </div>
@@ -96,7 +90,8 @@ const Register = () => {
       </div>
       <button type="submit">Submit</button>
     </form>
+    </>
   );
 };
 
-export default Register
+export default Register;

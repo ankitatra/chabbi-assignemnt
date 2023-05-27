@@ -71,9 +71,10 @@ const Dashbord = () => {
   };
 
   const checkkey = (key) => {
-    if (para[count] == key) {
+    if (para[count] ===key) {
       setacc(acc + 1);
     } else {
+      
       setShowError(true);
       setTimeout(() => {
         setShowError(false);
@@ -128,11 +129,12 @@ const Dashbord = () => {
         }}
       >
         <input
-          style={{ width: "80%", height: "100px", padding: "10px" }}
+          style={{ width: "80%", height: "100px", padding: "10px",fontSize:"20px" }}
           type="text"
           value={inputValue}
           onChange={(event) => setInputValue(event.target.value)}
           onKeyPress={handleKeyPress}
+         
         />
       </div>
       {showmsg && <div
