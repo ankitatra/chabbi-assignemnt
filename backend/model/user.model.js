@@ -5,7 +5,6 @@ const userSchema = mongoose.Schema(
     username: {
       type: String,
       required: true,
-      // unique: true,
     },
     profile_picture: {
       type: String,
