@@ -11,7 +11,7 @@ const navigate=useNavigate()
   const fetchdata = async () => {
     try {
       const response = await axios.get(
-        `https://fair-erin-woodpecker-yoke.cyclic.app/user/data/${localStorage.getItem("userid")}`
+        `http://localhost:8000/user/data/${localStorage.getItem("userid")}`
       );
       const data = response.data;
       console.log("data", data);
@@ -33,35 +33,36 @@ const navigate=useNavigate()
     <div>
       <nav
         style={{
-          backgroundColor: "black",
+          backgroundColor: "#f98bffbd",
           height: "60px",
           color: "white",
           display: "flex",
-          justifyContent: "flex-end",
+          justifyContent: "space-between",
           paddingRight: "20px",
         }}
       >
-        <p style={{ paddingRight: "140px", fontSize: "20px" }}>
+        <p style={{ paddingLeft: "40px", fontSize: "20px" }}>
           {" "}
-          Improve Typing Speed Accuracy with AcuType!
+          AcuType
         </p>
-        <p style={{ paddingRight: "140px", fontSize: "20px" }}>{time}</p>
-        <p style={{ paddingRight: "140px", fontSize: "20px" }}>
+        <p style={{ paddingLeft: "140px", fontSize: "20px"  }}>Timer : {time}</p>
+        <p style={{ paddingLeft: "100px", fontSize: "20px" }}>
           Accuracy is {((acc / length) * 100).toFixed(2)} %
         </p>
-        <p style={{ paddingRight: "140px", fontSize: "20px" }}>
-          KeyCount : {acc}
+        <p style={{ paddingLeft: "100px", fontSize: "20px" }}>
+        Correct KeyCount : {acc}
         </p>
-
-        <p style={{ fontSize: "20px", paddingRight: "30px" }}>
+        <p style={{ fontSize: "20px", paddingLeft: "230px" }}>
           {sdata.username}
-        </p>
-        <div class="dropdown">
+        </p> 
+        
+        <div className="dropdown">
+    
           <img
             style={{ width: "50px", borderRadius: "30px" }}
             src={sdata.profile_picture}
           />
-          <div class="dropdown-content">
+          <div className="dropdown-content">
             <p onClick={logout}>Logout</p>
           </div>
         </div>

@@ -4,14 +4,15 @@ import "./css/dashboard.css";
 
 const Dashbord = () => {
   const [inputValue, setInputValue] = useState(" ");
-  const [word, setWord] = useState("");
   const [para, setpara] = useState([]);
   const [count, setcount] = useState(0);
   const [showError, setShowError] = useState(false);
   const [acc, setacc] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
   const [showmsg, setShowmsg] = useState(false);
-  const [timer, setTimer] = useState(180); // 3 minutes in seconds
+  const [timer, setTimer] = useState(300); // 5 minutes in seconds
+  const [color, setColor] = useState("");
+  const [word, setWord] = useState([]);
   function generateRandomParagraph(sentenceCount, wordsPerSentence) {
     const characters = "asdfjkl";
     const paragraph = [];
@@ -54,11 +55,11 @@ const Dashbord = () => {
     if (timer === 1) {
       setTimeout(() => {
         setTimer(10);
-        setShowmsg(true)
+        setShowmsg(true);
       }, 1000);
-      setTimeout(()=>{
-        window. location. reload(true)
-      },3000)
+      setTimeout(() => {
+        window.location.reload(true);
+      }, 3000);
     }
   }, [timer]);
 
@@ -71,10 +72,12 @@ const Dashbord = () => {
   };
 
   const checkkey = (key) => {
-    if (para[count] ===key) {
+    if (para[count] === key) {
+      setWord(para.split(""));
       setacc(acc + 1);
+      setColor("green");
     } else {
-      
+      setColor("red");
       setShowError(true);
       setTimeout(() => {
         setShowError(false);
@@ -129,20 +132,36 @@ const Dashbord = () => {
         }}
       >
         <input
-          style={{ width: "80%", height: "100px", padding: "10px",fontSize:"20px" }}
+          style={{
+            width: "80%",
+            height: "100px",
+            padding: "10px",
+            fontSize: "20px",
+          }}
           type="text"
           value={inputValue}
           onChange={(event) => setInputValue(event.target.value)}
           onKeyPress={handleKeyPress}
-         
         />
       </div>
-      {showmsg && <div
-        style={{ position: "absolute", left: "22%", top: "10px", zIndex: "10",width:"800px",height:"800px",background:"pink",textAlign:"center",fontSize:"40px"}}
-      >
-        Time Up!
-       <p>Congratulation Your accuracy is {acc}</p>
-        </div>}
+      {showmsg && (
+        <div
+          style={{
+            position: "absolute",
+            left: "22%",
+            top: "10px",
+            zIndex: "10",
+            width: "800px",
+            height: "800px",
+            background: "pink",
+            textAlign: "center",
+            fontSize: "40px",
+          }}
+        >
+          Time Up!
+          <p>Congratulation Your accuracy is {acc}</p>
+        </div>
+      )}
     </div>
   );
 };

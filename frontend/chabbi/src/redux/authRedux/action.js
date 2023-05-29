@@ -5,7 +5,7 @@ export const login = (payload) => (dispatch) => {
     console.log("payload",payload.data)
   dispatch({ type: types.USER_LOGIN_REQUEST });
   return axios
-    .post("https://fair-erin-woodpecker-yoke.cyclic.app/user/register", payload.data)
+    .post("http://localhost:8000/user/register", payload.data)
     .then((r) => {
         console.log("R",r.data._id)
         localStorage.setItem("userid",r.data._id)
@@ -20,7 +20,7 @@ export const login = (payload) => (dispatch) => {
 export const fetchData = () => {
     return async (dispatch) => {
       try {
-        const response = await axios.get(`https://fair-erin-woodpecker-yoke.cyclic.app/user/data/${localStorage.getItem("userid")}`);
+        const response = await axios.get(`http://localhost:8000/user/data/${localStorage.getItem("userid")}`);
         const data = response.data;
         dispatch({ type: types.USER_DATA_SUCCESS, payload: data });
       
